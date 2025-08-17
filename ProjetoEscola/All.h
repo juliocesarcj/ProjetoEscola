@@ -1,20 +1,35 @@
+#ifndef All_H
+#define All_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+//Resultados bons Aluno
+#define TAM_LISTA_ALUNO 10
+#define SUCESSO_CADASTRO -1
+#define SUCESSO_EXCLUSAO_ALUNO -2
+#define SUCESSO_ATUALIZACAO_ALUNO -3
+
+//Resultados ruins Aluno
+#define falha -29
+#define ERRO_CADASTRO_MATRICULA -30
+#define ERRO_CADASTRO_SEXO -31
+#define ERRO_DATA_INVALIDA -32
+#define ERRO_EXCLUSAO_ALUNO -33
+#define ALUNO_NAO_ENCONTRADO -34
 
 
 
-
-
+#define valido -45
+#define invalido -46
 typedef struct Student{
     int id;
+    int chamadaAluno;
     char nameAluno[255];
     int ativoAluno;
-    int qtdAluno;
     char sexoAluno;
+    int qtdAluno;
     int *PilhaAluno;
-    int topAluno;
     int idadeAluno;
     char cpfAluno[12];
 } Student;
@@ -23,10 +38,8 @@ typedef struct Teacher{
     int id;
     char nameTeacher[255];
     int ativoTeacher;
-    int qtdTeacher;
     char sexoTeacher;
     int *PilhaTeacher;
-    int topTeacher;
     char cpfTeacher[12];
 } Teacher;
 
@@ -35,7 +48,6 @@ typedef struct Discipline{
     char nameDisciplina[255];
     int ativoDisciplina;
     int qtdDisciplina;
-    int *PilhaDisciplina;
     int topDisciplina;
 } Disciplina;
 
@@ -45,18 +57,9 @@ typedef struct Date{
     int ano;
 } Date;
 
-typedef struct HeadStudente{
-    Student *Head;
-}HeadStudent;
+void atualizacaodeDados(Student aluno[], int qtdAluno);
+int createStudent(Student aluno[], int qtdAluno);
+int validacaodeCPF(Student aluno);
+void readStudent(Student aluno[], int qtdAluno);
 
-typedef struct HeadTeacher{
-    Teacher *HeadTeacher;
-}HeadTeacher;
-
-typedef struct HeadDiscipline{
-    Disciplina *HeadDiscipline;
-}HeadDiscipline;
-
-void createStudent(Student *Pilha);
-void init_student(Student *Pilha);
-void readStudent(Student *Pilha);
+#endif 
