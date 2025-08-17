@@ -61,5 +61,6 @@ void atualizacaodeDados(Student aluno[], int qtdAluno);
 int createStudent(Student aluno[], int qtdAluno);
 int validacaodeCPF(Student aluno);
 void readStudent(Student aluno[], int qtdAluno);
+int deletarStudent(Student aluno[], int qtdAluno);
 
 #endif 

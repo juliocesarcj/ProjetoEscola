@@ -8,8 +8,6 @@ int createStudent(Student aluno[], int qtdAluno)
     aluno[qtdAluno].id = 2025003 + qtdAluno;
 
     printf("Criar Matricula Aluno.\n");
-
-    printf("digite o nome do aluno: \n");
     fgets(aluno[qtdAluno].nameAluno, 250, stdin);
 
     printf("digite o sexo do aluno (M/F): \n");
@@ -117,7 +115,7 @@ void atualizacaodeDados(Student aluno[], int qtdAluno)
     }
 }
 
-void deletarStudent(Student aluno[], int qtdAluno)
+int deletarStudent(Student aluno[], int qtdAluno)
 {
     printf("Funcao deletar aluno.\n");
     int chamada;
