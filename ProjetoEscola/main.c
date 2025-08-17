@@ -155,7 +155,7 @@ int main()
 
                             case 1:
                                 printf("Deletar Matricula Aluno.\n");
-                                deleteStudent(aluno, qtdAlunoIF);
+                                // deleteStudent(aluno, qtdAlunoIF);
                                 break;
                             case 2:
                                 printf("Deletar Matricula Professor.\n");
