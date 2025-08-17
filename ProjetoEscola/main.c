@@ -136,6 +136,8 @@ int main()
                             printf("Criar Matricula Professor.\n");
                             break;
                         }
+                    }
+                }
 
                         int sairDeletar = 0;
                         int quase = 0;
@@ -153,6 +155,7 @@ int main()
 
                             case 1:
                                 printf("Deletar Matricula Aluno.\n");
+                                deleteStudent(aluno, qtdAlunoIF);
                                 break;
                             case 2:
                                 printf("Deletar Matricula Professor.\n");
@@ -179,8 +182,5 @@ int main()
                 }
             }
         
-        }
-        }
-    }
             return 0;
         }
