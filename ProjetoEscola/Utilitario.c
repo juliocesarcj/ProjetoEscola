@@ -7,7 +7,7 @@
 
 int validacaodeCPF(Student aluno[], int qtdAluno){
 
-    int CPF = aluno[qtdAluno].cpfAluno;
+    int cpf = aluno[qtdAluno].cpfAluno;
     int digito1 = atoi (aluno[0].cpfAluno);
     int digito2 = atoi (aluno[1].cpfAluno);
     int digito3 = atoi (aluno[2].cpfAluno);
