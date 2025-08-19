@@ -39,7 +39,6 @@ typedef struct Teacher{
     char nameTeacher[255];
     int ativoTeacher;
     char sexoTeacher;
-    int *PilhaTeacher;
     char cpfTeacher[12];
 } Teacher;
 
@@ -51,16 +50,17 @@ typedef struct Discipline{
     int topDisciplina;
 } Disciplina;
 
-typedef struct Date{
+typedef struct Nascimento{
+    char data[11];;
     int dia;
     int mes;
-    int ano;
-} Date;
+    int ano; 
+} Nascimento;
 
-void atualizacaodeDados(Student aluno[], int qtdAluno);
-int createStudent(Student aluno[], int qtdAluno);
-int validacaodeCPF(Student aluno);
-void readStudent(Student aluno[], int qtdAluno);
+void atualizacaodeDados(Student aluno[], int qtdAluno, Nascimento cal[]);
+int createStudent(Student aluno[], int qtdAluno, Nascimento calendario[]);
+int validacaodeCPF(Student aluno[], int qtdAluno);
+void readStudent(Student aluno[], int qtdAluno, Nascimento calendario[]);
 int deletarStudent(Student aluno[], int qtdAluno);
 
 #endif 
