@@ -5,21 +5,21 @@
 
 
 
-int validacaodeCPF(Student aluno[], int qtdAluno){
+int validacaodeCPF(CPF cpf[], int qtdAluno){
 
-    int cpf = aluno[qtdAluno].cpfAluno;
-    int digito1 = atoi (aluno[0].cpfAluno);
-    int digito2 = atoi (aluno[1].cpfAluno);
-    int digito3 = atoi (aluno[2].cpfAluno);
-    int digito4 = atoi (aluno[3].cpfAluno);
-    int digito5 = atoi (aluno[4].cpfAluno);
-    int digito6 = atoi (aluno[5].cpfAluno);
-    int digito7 = atoi (aluno[6].cpfAluno);
-    int digito8 = atoi (aluno[7].cpfAluno);
-    int digito9 = atoi (aluno[8].cpfAluno);
+   
+    int digito1 = atoi (cpf[0].cpf);
+    int digito2 = atoi (cpf[1].cpf);
+    int digito3 = atoi (cpf[2].cpf);
+    int digito4 = atoi (cpf[3].cpf);
+    int digito5 = atoi (cpf[4].cpf);
+    int digito6 = atoi (cpf[5].cpf);
+    int digito7 = atoi (cpf[6].cpf);
+    int digito8 = atoi (cpf[7].cpf);
+    int digito9 = atoi (cpf[8].cpf);
 
-    int digitovd = atoi (aluno[9].cpfAluno);
-    int digitovd2 = atoi (aluno[10].cpfAluno);
+    int digitovd = atoi (cpf[9].cpf);
+    int digitovd2 = atoi (cpf[10].cpf);
 
     int multsoma = (digito1*10) + (digito2*9) + (digito3*8) + (digito4*7) + (digito5*6) + (digito6*5) + (digito7*4) + (digito8*3) + (digito9*2); 
     int primeiroresto = multsoma % 11;

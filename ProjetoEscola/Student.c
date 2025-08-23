@@ -3,7 +3,7 @@
 #include <string.h>
 #include "All.h"
 
-int createStudent(Student aluno[], int qtdAluno)
+int createStudent(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[])
 {
     aluno[qtdAluno].id = 2025003 + qtdAluno;
 
@@ -23,7 +23,7 @@ int createStudent(Student aluno[], int qtdAluno)
     printf("digite o cpf do aluno: \n");
     scanf("%s", aluno[qtdAluno].cpfAluno);
     getchar();
-    int validade = validacaodeCPF(aluno[qtdAluno]);
+    int validade = validacaodeCPF(cpf, qtdAluno);
     if (validade == valido)
     {
         return falha;
@@ -32,7 +32,18 @@ int createStudent(Student aluno[], int qtdAluno)
     {
         return falha;
     }
-    printf("\n");
+    printf("digite data de nascimento\n");
+    scanf("%d/%d/%d", &data[qtdAluno].dia, &data[qtdAluno].mes, &data[qtdAluno].ano);
+    sprintf(data[qtdAluno].data, "%02d/%02d/%04d", data[qtdAluno].dia, data[qtdAluno].mes, data[qtdAluno].ano);
+
+    printf("digite o nome do aluno: \n");
+    fgets(aluno[qtdAluno].nameAluno, 250, stdin);
+    while(aluno[qtdAluno].nameAluno[0] == '\n'){
+    if(aluno[qtdAluno].nameAluno[0] == '\n'){
+        aluno[qtdAluno].nameAluno[0] = '\0';
+    }
+}
+    aluno[qtdAluno].chamadaAluno = qtdAluno + 1;
     return SUCESSO_CADASTRO;
 }
 
@@ -94,7 +105,7 @@ void atualizacaodeDados(Student aluno[], int qtdAluno)
                         printf("Digite o novo CPF: ");
                         scanf("%s", aluno[i].cpfAluno);
                         getchar();
-                        int validade = validacaodeCPF(aluno[i]);
+                        int validade = validacaodeCPF(aluno, qtdAluno);
                          if (validade == valido)
                         {
                             printf("CPF atualizado com sucesso.\n");
@@ -126,6 +137,58 @@ int deletarStudent(Student aluno[], int qtdAluno)
         if (aluno[i].ativoAluno == 1 && aluno[i].chamadaAluno == chamada)
         {
             aluno[i].ativoAluno = 0;
+        }
+    }
+}
+
+void readSexStudent(Student aluno[], int qtdAluno, char sexo)
+{
+    for (int i = 0; i < qtdAluno; i++)
+    {
+        if (aluno[i].sexoAluno == sexo && aluno[i].ativoAluno == 1)
+        {
+            printf("\nNumero de Chamada: %d", aluno[i].chamadaAluno);
+            printf("\nmatricula: MAT%d", aluno[i].id);
+            printf("\nNome: %s", aluno[i].nameAluno);
+            printf("\nSexo: %c", aluno[i].sexoAluno);
+            printf("\nIdade: %d", aluno[i].idadeAluno);
+            printf("\nCPF: %s\n", aluno[i].cpfAluno);
+        }
+    }
+}
+void readDataStudent(Student aluno[], int qtdAluno,Nascimento dataAluno[], CPF cpf[], char data[])
+{
+    for (int i = 0; i < qtdAluno; i++)
+    {
+        if (strcmp(dataAluno[i].data, data) == 0 && aluno[i].ativoAluno == 1)
+        {
+            printf("\nNumero de Chamada: %d", aluno[i].chamadaAluno);
+            printf("\nmatricula: MAT%d", aluno[i].id);
+            printf("\nNome: %s", aluno[i].nameAluno);
+            printf("\nSexo: %c", aluno[i].sexoAluno);
+            printf("\nIdade: %d", aluno[i].idadeAluno);
+            printf("\nCPF: %s\n", aluno[i].cpfAluno);
+        }
+    }
+}
+
+void readOrdenadosStudants(Student aluno[], int qtdAluno)
+{
+    char vetor[255];
+    for(int i=0; i<qtdAluno; i++){
+        vetor[i] = aluno[i].nameAluno;
+    }
+    char aux;
+    for (int i = 0; i < qtdAluno - 1; i++)
+    {
+        for (int j = i + 1; j < qtdAluno; j++)
+        {
+            if (strcmp(aluno[i].nameAluno, aluno[j].nameAluno) > 0)
+            {
+                aux = vetor[i];
+                vetor[i] = vetor[j];
+                vetor[j] = aux;
+            }
         }
     }
 }

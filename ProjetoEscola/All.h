@@ -51,16 +51,25 @@ typedef struct Discipline{
     int topDisciplina;
 } Disciplina;
 
-typedef struct Date{
+typedef struct Nascimento{
     int dia;
     int mes;
     int ano;
-} Date;
+    char data[11];
+} Nascimento;
 
+typedef struct CPF{
+    char cpf[12];
+} CPF;
+//Aluno
 void atualizacaodeDados(Student aluno[], int qtdAluno);
 int createStudent(Student aluno[], int qtdAluno);
-int validacaodeCPF(Student aluno);
-void readStudent(Student aluno[], int qtdAluno);
+int validacaodeCPF(Student aluno, int qtdAluno);
 int deletarStudent(Student aluno[], int qtdAluno);
+void readStudent(Student aluno[], int qtdAluno);
+void readSexStudent(Student aluno[], int qtdAluno, char sexo);
+void readDataStudent(Student aluno[], int qtdAluno, int idade);
+
+
 
 #endif 
