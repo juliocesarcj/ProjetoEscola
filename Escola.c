@@ -111,7 +111,7 @@ int main()
                             break;
                         }
                         case 4:
-                            readOrdenadosStudants(aluno, qtdAlunoIF);
+                            readOrdenadosStudants(aluno, qtdAlunoIF, data, cpf);
                             break;
                         case 0:
                             sairLeitura = 1;

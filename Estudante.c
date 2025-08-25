@@ -152,6 +152,19 @@ int deletarStudent(Student aluno[], int qtdAluno)
     int achou = 0;
     if (chamada <= 0)
         printf("Este aluno nao existe\n");
+    
+        for(int i = 0; i < qtdAluno; i++)
+        {
+            if (aluno[i].ativoAluno == 1 && aluno[i].chamadaAluno == chamada)
+            {
+                printf("Aluno ^^%s^^ encontrado e deletado com sucesso.\n", aluno[i].nameAluno);
+            }
+            else if (aluno[i].ativoAluno == 0 && aluno[i].chamadaAluno == chamada)
+            {
+                printf("Este aluno nao foi encontrado.\n");
+                return 0;
+            }
+        }
     for (int i = 0; i < qtdAluno; i++)
     {
         if (aluno[i].chamadaAluno == chamada)
@@ -199,7 +212,7 @@ void readSexStudent(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[])
     }
     for (int i = 0; i < qtdAluno; i++)
     {
-        if (aluno[i].sexoAluno == sexo && aluno[i].ativoAluno == 1)
+         if (sexo == aluno[i].sexoAluno && aluno[i].ativoAluno == 1)
         {
             printf("\nNumero de Chamada: %d", aluno[i].chamadaAluno);
             printf("\nmatricula: MAT%d", aluno[i].id);
@@ -207,13 +220,14 @@ void readSexStudent(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[])
             printf("\nSexo: %c", aluno[i].sexoAluno);
             printf("\nIdade: %d", aluno[i].idadeAluno);
             printf("\nCPF: %s\n", aluno[i].cpfAluno);
-            printf("Data de Nascimento %s\n", data[i].data);
-            encontrado = 1;
+            sprintf(data[i].data, "%02d/%02d/%04d", data[i].dia, data[i].mes, data[i].ano);
+            printf("Data de Nascimento: %s\n", data[i].data);
+            aluno[i].chamadaAluno++;
         }
     }
 }
 
-void readOrdenadosStudants(Student aluno[], int qtdAluno)
+void readOrdenadosStudants(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[])
 {
     if (qtdAluno <= 0)
     {
@@ -232,11 +246,19 @@ void readOrdenadosStudants(Student aluno[], int qtdAluno)
         for (int j = 0; j < qtdAluno - i - 1; j++)
         {
 
-            if (strcmp(tempAluno[j].nameAluno, tempAluno[j + 1].nameAluno) > 0)
+            if (tempAluno[j].nameAluno > tempAluno[j + 1].nameAluno)
             {
                 Student temp = tempAluno[j];
                 tempAluno[j] = tempAluno[j + 1];
                 tempAluno[j + 1] = temp;
+
+                CPF tempCpf = cpf[j];
+                cpf[j] = cpf[j + 1];
+                cpf[j + 1] = tempCpf;
+
+                Nascimento tempData = data[j];
+                data[j] = data[j + 1];
+                data[j + 1] = tempData;
             }
         }
     }
@@ -244,81 +266,73 @@ void readOrdenadosStudants(Student aluno[], int qtdAluno)
     printf("Lista de Alunos Ordenados por Nome:\n");
     for (int i = 0; i < qtdAluno; i++)
     {
-        if (tempAluno[i].ativoAluno == 1)
+         if (aluno[i].ativoAluno == 1)
         {
-            printf("Aluno %d\n", i + 1);
-            printf("Nome: %s\n", tempAluno[i].nameAluno);
-            printf("Matricula: MAT%d\n", tempAluno[i].id);
-            printf("Sexo: %c\n", tempAluno[i].sexoAluno);
-            printf("Idade: %d\n", tempAluno[i].idadeAluno);
+            printf("\nNumero de Chamada: %d", aluno[i].chamadaAluno);
+            printf("\nmatricula: MAT%d", aluno[i].id);
+            printf("\nNome: %s", aluno[i].nameAluno);
+            printf("\nSexo: %c", aluno[i].sexoAluno);
+            printf("\nIdade: %d", aluno[i].idadeAluno);
+            printf("\nCPF: %s\n", aluno[i].cpfAluno);
+            sprintf(data[i].data, "%02d/%02d/%04d", data[i].dia, data[i].mes, data[i].ano);
+            printf("Data de Nascimento: %s\n", data[i].data);
+            aluno[i].chamadaAluno++;
         }
     }
 }
 void buscaNome(Student aluno[], int qtdAluno)
 {
-
-    char nomeMinusculo[255];
-
-    for (int i = 0; i < qtdAluno; i++)
-    {
-        for (int j = 0; aluno[i].nameAluno[j] != '\0'; j++)
-        {
-            nomeMinusculo[i] = aluno[i].nameAluno[i];
-        }
-    }
-    for (int i = 0; i < qtdAluno; i++)
-    {
-        for (int j = 0; j < qtdAluno; j++)
-        {
-            if (nomeMinusculo[j] >= 'A' && nomeMinusculo[j] <= 'Z')
-            {
-                nomeMinusculo[j] = nomeMinusculo[j] + 32;
-            }
-        }
-    }
     char Busca[255];
-    printf("digite uma busca:\n");
+    printf("Digite uma busca:\n");
     fgets(Busca, sizeof(Busca), stdin);
-    for (int j = 0; Busca[j] != '\0'; j++)
-    {
-        if (Busca[j] == '\n')
-        {
-            Busca[j] = '\0';
-        }
-    }
-    int achou = 0;
-    int achou2 = 0;
-    int cont = 0;
-    for (int i = 0; Busca[i] != '\0'; i++)
-    {
-        if (Busca[i] != '\0' && Busca[i] != '\n')
-        {
-            cont++;
-        }
-    }
-    int Tam_substring = cont;
+    
+    for(int i = 0; Busca[i] != '\0'; i++)
+        if (Busca[i] == '\n')
+            Busca[i] = '\0';
 
-    for (int j = 0; j < qtdAluno; j++)
+    for (int i = 0; Busca[i]; i++)
+        if (Busca[i] >= 'A' && Busca[i] <= 'Z')
+            Busca[i] += 32;
+
+    int encontrou = 0;
+
+    for (int i = 0; i < qtdAluno; i++)
     {
-        achou2 = 0;
-        for (int i = 0; nomeMinusculo[i] != '\0'; i++)
+        char nomeMinusculo[255];
+        int j;
+        for (j = 0; aluno[i].nameAluno[j] != '\0'; j++)
+            nomeMinusculo[j] = aluno[i].nameAluno[j];
+        nomeMinusculo[j] = '\0';
+
+        for (j = 0; nomeMinusculo[j] != '\0'; j++)
+            if (nomeMinusculo[j] >= 'A' && nomeMinusculo[j] <= 'Z')
+                nomeMinusculo[j] += 32;
+
+        int k, achou;
+        for (k = 0; nomeMinusculo[k] != '\0'; k++)
         {
-            if (nomeMinusculo[i] == Busca[achou2])
+            achou = 1;
+            for (int l = 0; Busca[l] != '\0'; l++)
             {
-
-                achou2++;
+                if (nomeMinusculo[k + l] != Busca[l])
+                {
+                    achou = 0;
+                    break;
+                }
+            }
+            if (achou)
+            {
+                printf("Resultado da busca: %s\n", aluno[i].nameAluno);
+                encontrou = 1;
+                break;
             }
         }
-        if (achou2 == Tam_substring)
-        {
-            printf("Resultado da busca: %s.\n", nomeMinusculo[j]);
-        }
-        else
-        {
-            printf("Resultado da busca: 0 encontrados\n");
-        }
     }
+
+    if (!encontrou)
+        printf("Nenhum aluno encontrado.\n");
 }
+
 void readStudentDataOrdem(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[])
 {
 
@@ -347,7 +361,8 @@ void readStudentDataOrdem(Student aluno[], int qtdAluno, Nascimento data[], CPF 
     }
     for (int i = 0; i < qtdAluno; i++)
     {
-        if (aluno[i].ativoAluno == 1)
+       
+    if (aluno[i].ativoAluno == 1)
         {
             printf("\nNumero de Chamada: %d", aluno[i].chamadaAluno);
             printf("\nmatricula: MAT%d", aluno[i].id);
