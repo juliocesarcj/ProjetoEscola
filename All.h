@@ -71,4 +71,5 @@ void readSexStudent(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[])
 void readOrdenadosStudants(Student aluno[], int qtdAluno);
 void buscaNome(Student aluno[], int qtdAluno);
 int ISBIX(Nascimento data[], int qtd);
+void readStudentDataOrdem(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[]);
 #endif

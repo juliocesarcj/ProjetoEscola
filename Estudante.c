@@ -259,12 +259,13 @@ void buscaNome(Student aluno[], int qtdAluno)
 
     char nomeMinusculo[255];
 
-for(int i = 0; i < qtdAluno; i++){
-    for(int j = 0; aluno[i].nameAluno[j] != '\0'; j++)
+    for (int i = 0; i < qtdAluno; i++)
     {
-        nomeMinusculo[i] = aluno[i].nameAluno[i];
+        for (int j = 0; aluno[i].nameAluno[j] != '\0'; j++)
+        {
+            nomeMinusculo[i] = aluno[i].nameAluno[i];
+        }
     }
-}
     for (int i = 0; i < qtdAluno; i++)
     {
         for (int j = 0; j < qtdAluno; j++)
@@ -315,6 +316,48 @@ for(int i = 0; i < qtdAluno; i++){
         else
         {
             printf("Resultado da busca: 0 encontrados\n");
+        }
+    }
+}
+void readStudentDataOrdem(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[])
+{
+
+    for (int i = 0; i < qtdAluno - 1; i++)
+    {
+        for (int j = i + 1; j < qtdAluno; j++)
+        {
+
+            if (data[i].ano > data[j].ano ||
+                (data[i].ano == data[j].ano && data[i].mes > data[j].mes) ||
+                (data[i].ano == data[j].ano && data[i].mes == data[j].mes && data[i].dia > data[j].dia))
+            {
+                Nascimento tmpData = data[i];
+                data[i] = data[j];
+                data[j] = tmpData;
+
+                Student tmpAluno = aluno[i];
+                aluno[i] = aluno[j];
+                aluno[j] = tmpAluno;
+
+                CPF tmpCpf = cpf[i];
+                cpf[i] = cpf[j];
+                cpf[j] = tmpCpf;
+            }
+        }
+    }
+    for (int i = 0; i < qtdAluno; i++)
+    {
+        if (aluno[i].ativoAluno == 1)
+        {
+            printf("\nNumero de Chamada: %d", aluno[i].chamadaAluno);
+            printf("\nmatricula: MAT%d", aluno[i].id);
+            printf("\nNome: %s", aluno[i].nameAluno);
+            printf("\nSexo: %c", aluno[i].sexoAluno);
+            printf("\nIdade: %d", aluno[i].idadeAluno);
+            printf("\nCPF: %s\n", aluno[i].cpfAluno);
+            sprintf(data[i].data, "%02d/%02d/%04d", data[i].dia, data[i].mes, data[i].ano);
+            printf("Data de Nascimento: %s\n", data[i].data);
+            aluno[i].chamadaAluno++;
         }
     }
 }

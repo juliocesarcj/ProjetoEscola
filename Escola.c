@@ -106,7 +106,8 @@ int main()
                         case 3:
                         {
                             Nascimento data[12];
-                            // readDataStudent(aluno, qtdAlunoIF, data);
+                            CPF cpf[12];
+                            readStudentDataOrdem(aluno, qtdAlunoIF, data, cpf);
                             break;
                         }
                         case 4:

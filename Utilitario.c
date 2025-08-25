@@ -64,61 +64,66 @@ int validacaodeCPF(CPF cpf[], int qtd)
     }
 }
 
-    int ISBIX(Nascimento data[], int qtd)
+int ISBIX(Nascimento data[], int qtd)
+{
+    for (int i = 0; data[qtd].data[i] != '\0'; i++)
     {
-        for (int i = 0; data[qtd].data[i] != '\0'; i++)
+        if (data[qtd].data[i] == '\n')
         {
-            if (data[qtd].data[i] == '\n')
-            {
-                data[qtd].data[i] = '\0';
-            }
+            data[qtd].data[i] = '\0';
         }
+    }
 
-        
-        int dia, mes, ano;
-        sscanf(data[qtd].data, "%d/%d/%d", &dia, &mes, &ano);
-        data[qtd].dia = dia;
-        data[qtd].mes = mes;
-        data[qtd].ano = ano;
-        
-        if (data[qtd].ano >= 2026)
-        return invalido;
+    int dia, mes, ano;
+    sscanf(data[qtd].data, "%d/%d/%d", &dia, &mes, &ano);
+    data[qtd].dia = dia;
+    data[qtd].mes = mes;
+    data[qtd].ano = ano;
 
+    if (data[qtd].ano < 100)
+    {
         if (data[qtd].ano >= 26)
         {
             data[qtd].ano += 1900;
         }
         else
         {
-                data[qtd].ano += 2000;
+            data[qtd].ano += 2000;
         }
-        int bix = ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0));
-
-        switch (data[qtd].mes)
-        {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
-            if (data[qtd].dia > 31)
-                return invalido;
-            break;
-        case 4:
-        case 6:
-        case 9:
-        case 11:
-            if (data[qtd].dia > 30)
-                return invalido;
-            break;
-        case 2:
-            if ((bix && data[qtd].dia > 29) || (!bix && data[qtd].dia > 28))
-                return invalido;
-            break;
-        default:
-            return invalido;
-        }
-        return valido;
     }
+
+    if (data[qtd].ano > 2025)
+    {
+        return invalido;
+    }
+
+    int bix = ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0));
+
+    switch (data[qtd].mes)
+    {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        if (data[qtd].dia > 31)
+            return invalido;
+        break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        if (data[qtd].dia > 30)
+            return invalido;
+        break;
+    case 2:
+        if ((bix && data[qtd].dia > 29) || (!bix && data[qtd].dia > 28))
+            return invalido;
+        break;
+    default:
+        return invalido;
+    }
+    return valido;
+}
