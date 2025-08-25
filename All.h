@@ -57,6 +57,9 @@ typedef struct Nascimento{
     int ano; 
 } Nascimento;
 
+typedef struct CPF{
+    char cpf[12];
+} CPF;
 void atualizacaodeDados(Student aluno[], int qtdAluno, Nascimento cal[]);
 int createStudent(Student aluno[], int qtdAluno, Nascimento calendario[]);
 int validacaodeCPF(Student aluno[], int qtdAluno);
