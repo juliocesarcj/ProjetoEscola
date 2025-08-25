@@ -55,6 +55,7 @@ typedef struct Nascimento{
     int dia;
     int mes;
     int ano; 
+    int formatada[15];
 } Nascimento;
 
 typedef struct CPF{
@@ -69,4 +70,5 @@ int deletarStudent(Student aluno[], int qtdAluno);
 void readSexStudent(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[]);
 void readOrdenadosStudants(Student aluno[], int qtdAluno);
 void buscaNome(Student aluno[], int qtdAluno);
+int ISBIX(Nascimento data[], int qtd);
 #endif

@@ -32,6 +32,10 @@ int createStudent(Student aluno[], int qtdAluno, Nascimento calendario[], CPF cp
     getchar();
     printf("digite a data de nascimento do aluno (dd/mm/aaaa): \n");
     fgets(calendario[qtdAluno].data, 11, stdin);
+    if (ISBIX(calendario, qtdAluno) == invalido)
+    {
+        return ERRO_DATA_INVALIDA;
+    };
 
     int validade = validacaodeCPF(cpf, qtdAluno);
     if (validade == invalido)
@@ -60,7 +64,8 @@ void readStudent(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[])
             printf("\nSexo: %c", aluno[i].sexoAluno);
             printf("\nIdade: %d", aluno[i].idadeAluno);
             printf("\nCPF: %s\n", aluno[i].cpfAluno);
-            printf("Data de Nascimento %s\n", data[i].data);
+            sprintf(data[i].data, "%02d/%02d/%04d", data[i].dia, data[i].mes, data[i].ano);
+            printf("Data de Nascimento: %s\n", data[i].data);
             aluno[i].chamadaAluno++;
         }
     }
@@ -245,12 +250,31 @@ void readOrdenadosStudants(Student aluno[], int qtdAluno)
             printf("Nome: %s\n", tempAluno[i].nameAluno);
             printf("Matricula: MAT%d\n", tempAluno[i].id);
             printf("Sexo: %c\n", tempAluno[i].sexoAluno);
-            printf("Idade: %d\n", tempAluno[i].idadeAluno);        }
+            printf("Idade: %d\n", tempAluno[i].idadeAluno);
+        }
     }
 }
 void buscaNome(Student aluno[], int qtdAluno)
 {
 
+    char nomeMinusculo[255];
+
+for(int i = 0; i < qtdAluno; i++){
+    for(int j = 0; aluno[i].nameAluno[j] != '\0'; j++)
+    {
+        nomeMinusculo[i] = aluno[i].nameAluno[i];
+    }
+}
+    for (int i = 0; i < qtdAluno; i++)
+    {
+        for (int j = 0; j < qtdAluno; j++)
+        {
+            if (nomeMinusculo[j] >= 'A' && nomeMinusculo[j] <= 'Z')
+            {
+                nomeMinusculo[j] = nomeMinusculo[j] + 32;
+            }
+        }
+    }
     char Busca[255];
     printf("digite uma busca:\n");
     fgets(Busca, sizeof(Busca), stdin);
@@ -276,9 +300,9 @@ void buscaNome(Student aluno[], int qtdAluno)
     for (int j = 0; j < qtdAluno; j++)
     {
         achou2 = 0;
-        for (int i = 0; aluno[j].nameAluno[i] != '\0'; i++)
+        for (int i = 0; nomeMinusculo[i] != '\0'; i++)
         {
-            if (aluno[j].nameAluno[i] == Busca[achou2])
+            if (nomeMinusculo[i] == Busca[achou2])
             {
 
                 achou2++;
@@ -286,8 +310,10 @@ void buscaNome(Student aluno[], int qtdAluno)
         }
         if (achou2 == Tam_substring)
         {
-            printf("Resultado da busca: %s.\n", aluno[j].nameAluno);
-        }else{
+            printf("Resultado da busca: %s.\n", nomeMinusculo[j]);
+        }
+        else
+        {
             printf("Resultado da busca: 0 encontrados\n");
         }
     }
