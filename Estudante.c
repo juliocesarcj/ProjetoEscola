@@ -194,7 +194,7 @@ void readSexStudent(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[])
     }
     for (int i = 0; i < qtdAluno; i++)
     {
-        if (aluno[i].sexoAluno == sexo)
+        if (aluno[i].sexoAluno == sexo && aluno[i].ativoAluno == 1)
         {
             printf("\nNumero de Chamada: %d", aluno[i].chamadaAluno);
             printf("\nmatricula: MAT%d", aluno[i].id);
@@ -205,5 +205,46 @@ void readSexStudent(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[])
             printf("Data de Nascimento %s\n", data[i].data);
             encontrado = 1;
         }
+    }
+}
+
+void readOrdenadosStudants(Student aluno[], int qtdAluno)
+{
+    if (qtdAluno <= 0)
+    {
+        printf("Nenhum aluno para ordenar.\n");
+        return;
+    }
+
+    Student tempAluno[qtdAluno];
+    for (int i = 0; i < qtdAluno; i++)
+    {
+        tempAluno[i] = aluno[i];
+    }
+
+    for (int i = 0; i < qtdAluno - 1; i++)
+    {
+        for (int j = 0; j < qtdAluno - i - 1; j++)
+        {
+
+            if (strcmp(tempAluno[j].nameAluno, tempAluno[j + 1].nameAluno) > 0)
+            {
+                Student temp = tempAluno[j];
+                tempAluno[j] = tempAluno[j + 1];
+                tempAluno[j + 1] = temp;
+            }
+        }
+    }
+
+    printf("Lista de Alunos Ordenados por Nome:\n");
+    for (int i = 0; i < qtdAluno; i++)
+    {
+        if (tempAluno[i].ativoAluno == 1)
+        {
+            printf("Aluno %d\n", i + 1);
+            printf("Nome: %s\n", tempAluno[i].nameAluno);
+            printf("Matricula: MAT%d\n", tempAluno[i].id);
+            printf("Sexo: %c\n", tempAluno[i].sexoAluno);
+            printf("Idade: %d\n", tempAluno[i].idadeAluno);        }
     }
 }

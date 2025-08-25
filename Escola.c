@@ -109,7 +109,7 @@ int main()
                             break;
                         }
                         case 4:
-                            // readOrdenadosStudants(aluno, qtdAlunoIF);
+                            readOrdenadosStudants(aluno, qtdAlunoIF);
                             break;
                         case 0:
                             sairLeitura = 1;
