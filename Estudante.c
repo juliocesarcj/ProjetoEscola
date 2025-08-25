@@ -248,3 +248,47 @@ void readOrdenadosStudants(Student aluno[], int qtdAluno)
             printf("Idade: %d\n", tempAluno[i].idadeAluno);        }
     }
 }
+void buscaNome(Student aluno[], int qtdAluno)
+{
+
+    char Busca[255];
+    printf("digite uma busca:\n");
+    fgets(Busca, sizeof(Busca), stdin);
+    for (int j = 0; Busca[j] != '\0'; j++)
+    {
+        if (Busca[j] == '\n')
+        {
+            Busca[j] = '\0';
+        }
+    }
+    int achou = 0;
+    int achou2 = 0;
+    int cont = 0;
+    for (int i = 0; Busca[i] != '\0'; i++)
+    {
+        if (Busca[i] != '\0' && Busca[i] != '\n')
+        {
+            cont++;
+        }
+    }
+    int Tam_substring = cont;
+
+    for (int j = 0; j < qtdAluno; j++)
+    {
+        achou2 = 0;
+        for (int i = 0; aluno[j].nameAluno[i] != '\0'; i++)
+        {
+            if (aluno[j].nameAluno[i] == Busca[achou2])
+            {
+
+                achou2++;
+            }
+        }
+        if (achou2 == Tam_substring)
+        {
+            printf("Resultado da busca: %s.\n", aluno[j].nameAluno);
+        }else{
+            printf("Resultado da busca: 0 encontrados\n");
+        }
+    }
+}

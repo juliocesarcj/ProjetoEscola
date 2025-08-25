@@ -41,7 +41,8 @@ int main()
                        "1. Criar Aluno\n"
                        "2. Ler Aluno\n"
                        "3. Atualizar Dados do Aluno\n"
-                       "4. Deletar Aluno\n");
+                       "4. Deletar Aluno\n"
+                       "5. Buscar Aluno por Nome\n");
                 scanf("%d", &selecaoAluno);
                 getchar();
 
@@ -130,6 +131,9 @@ int main()
                     break;
                 case 4:
                     deletarStudent(aluno, qtdAlunoIF);
+                    break;
+                case 5:
+                    buscaNome(aluno, qtdAlunoIF);
                     break;
                 case 0:
                     sair = 1;

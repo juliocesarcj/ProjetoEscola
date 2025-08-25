@@ -68,4 +68,5 @@ void readStudent(Student aluno[], int qtdAluno, Nascimento calendario[], CPF cpf
 int deletarStudent(Student aluno[], int qtdAluno);
 void readSexStudent(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[]);
 void readOrdenadosStudants(Student aluno[], int qtdAluno);
-#endif 
+void buscaNome(Student aluno[], int qtdAluno);
+#endif
