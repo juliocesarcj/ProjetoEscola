@@ -60,10 +60,12 @@ typedef struct Nascimento{
 typedef struct CPF{
     char cpf[12];
 } CPF;
-void atualizacaodeDados(Student aluno[], int qtdAluno, Nascimento cal[]);
-int createStudent(Student aluno[], int qtdAluno, Nascimento calendario[]);
-int validacaodeCPF(Student aluno[], int qtdAluno);
-void readStudent(Student aluno[], int qtdAluno, Nascimento calendario[]);
+
+void atualizacaodeDados(Student aluno[], int qtdAluno, Nascimento cal[], CPF cpf[]);
+int createStudent(Student aluno[], int qtdAluno, Nascimento calendario[], CPF cpf[]);
+int validacaodeCPF(CPF cpf[], int qtd);
+void readStudent(Student aluno[], int qtdAluno, Nascimento calendario[], CPF cpf[]);
 int deletarStudent(Student aluno[], int qtdAluno);
+void readSexStudent(Student aluno[], int qtdAluno, Nascimento data[], CPF cpf[]);
 
 #endif 

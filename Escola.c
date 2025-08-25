@@ -56,8 +56,8 @@ int main()
                     {
                     case SUCESSO_CADASTRO:
                         printf("Cadastro realizado com sucesso.\n");
-                        aluno[qtdAlunoIF].chamadaAluno=qtdAlunoIF+1;
-                        aluno[qtdAlunoIF].ativoAluno=1;
+                        aluno[qtdAlunoIF].chamadaAluno = qtdAlunoIF + 1;
+                        aluno[qtdAlunoIF].ativoAluno = 1;
                         qtdAlunoIF++;
                         break;
                     case ERRO_CADASTRO_SEXO:
@@ -71,7 +71,7 @@ int main()
                         printf("Erro no cadastro, data invalida.\n");
                         break;
                     default:
-                    printf("ERRO DESCONHECIDO.\n");
+                        printf("ERRO DESCONHECIDO.\n");
                         break;
                     }
                     break;
@@ -93,17 +93,13 @@ int main()
                         switch (selecaoLeitura)
                         {
                         case 1:
-                        Nascimento data[11];
-                        CPF cpf[12];
+                            Nascimento data[11];
+                            CPF cpf[12];
                             readStudent(aluno, qtdAlunoIF, data, cpf);
                             break;
                         case 2:
                         {
-                            printf("Digite o sexo para busca (M/F): ");
-                            char sexo;
-                            scanf(" %c", &sexo);
-                            getchar();
-                            // readSexStudent(aluno, qtdAlunoIF, sexo);
+                            readSexStudent(aluno, qtdAlunoIF, data, cpf);
                             break;
                         }
                         case 3:
@@ -141,171 +137,170 @@ int main()
                 default:
                     printf("Opcao invalida.\n");
                     break;
-                
-            
-            break;
-        
-        // case 2:
-        // {
-        //     printf("Menu Professor.\n");
-        //     int sairProfessor = 0;
-        //     int selecaoProfessor = 0;
-        //     while (!sairProfessor)
-        //     {
-        //         printf("0. Voltar\n"
-        //                "1. criar  Matricula do Professor\n"
-        //                "2. Ler Matriculas dos Professores\n"
-        //                "3. Atualizar Matriculas dos Professores\n"
-        //                "4. Deletar Matriculas dos Professores\n");
-        //         scanf("%d", &selecaoProfessor);
-        //         getchar();
-        //         switch (selecaoProfessor)
-        //         {
-        //         case 1:
-        //             Teacher professor[TAM_LISTA_PROFESSOR];
-        //             Nascimento data[TAM_LISTA_PROFESSOR];
-        //             CPF cpf[TAM_LISTA_PROFESSOR];
-        //             int qtd;
-        //             printf("Criar Matricula do Professor.\n");
-        //             creatTeacher(professor, qtd, data, cpf);
-        //             qtd++;
-        //             break;
-        //         case 2:
-        //         {
-        //             printf("Ler Matriculas dos Professores: ");
-        //             int selecaoLeitura = 0;
-        //             while (!selecaoLeitura)
-        //             {
-        //                 printf("Menu de Leitura de Professores.\n");
-        //                 printf("1. Ler todos os Professores\n"
-        //                        "2. Ler Professores por sexo\n"
-        //                        "3. Ler Professores por data de nascimento\n"
-        //                        "4. Ler Professores ordenados por nome\n"
-        //                        "0. Voltar\n");
-        //                 scanf("%d", &selecaoLeitura);
-        //                 getchar();
-        //                 switch (selecaoLeitura)
-        //                 {
-        //                 case 1:
-        //                     Teacher professor[TAM_LISTA_PROFESSOR];
-        //                     Nascimento data[TAM_LISTA_PROFESSOR];
-        //                     CPF cpf[TAM_LISTA_PROFESSOR];
-        //                     int qtd;
-        //                     readTeacher(professor, qtd, data, cpf);
-        //                     break;
-        //                 case 2:
-        //                 {
-        //                     char sexo;
-        //                     readSexTeacher(professor, qtd, sexo, data, cpf);
-        //                     break;
-        //                 }
-        //                 case 3:
-        //                 {
-        //                     Nascimento data[11];
-        //                     readDataTeacher(professor, qtd, data, cpf);
 
-        //                     break;
-        //                 }
-        //                 case 4:
-        //                     readOrdenadosTeachers(professor, qtd, data, cpf);
-        //                     break;
-        //                 case 0:
-        //                     sairProfessor = 1;
-        //                     break;
-        //                 default:
-        //                     printf("Opcao invalida.\n");
-        //                     break;
-        //                 }
-        //             }
-        //         }
-        //         break;
-        //         }
-        //     }
-        // }
-        // case 3:
-        //     printf("Menu Disciplina.\n");
-        //     int sairDisciplina = 0;
-        //     int selecaoDisciplina = 0;
-        //     while (!sairDisciplina)
-        //     {
-        //         printf("0. Voltar\n"
-        //                "1. criar Disciplina\n"
-        //                "2. Ler Disciplinas\n"
-        //                "3. Atualizar Disciplinas\n"
-        //                "4. Deletar Disciplinas\n");
-        //         scanf("%d", &selecaoDisciplina);
-        //         getchar();
-        //         switch (selecaoDisciplina)
-        //         {
-        //         case 1:
-        //             Disciplina disc[TAM_LISTA_DISCIPLINA];
-        //             int qtd;
-        //             printf("Criar Disciplina.\n");
-        //             criarDisciplina(disc, qtd);
-        //             break;
-        //         case 2:
-        //         {
-        //             int selecaoleituraDisciplina = 0;
-        //             while (!sairDisciplina)
-        //             {
-        //                 printf("Menu de Leitura de Disciplinas.\n");
-        //                 printf("1. Ler todas as Disciplinas\n"
-        //                        "2. Ler Alunos com poucas Disciplinas\n"
-        //                        "3. Ler Turmas com mais de 40 Alunos\n"
-        //                        "0. Voltar\n");
-        //                 scanf("%d", &selecaoleituraDisciplina);
-        //                 getchar();
-        //                 switch (selecaoleituraDisciplina)
-        //                 {
-        //                 case 1:
-        //                     readDisciplina(disc, qtd);
-        //                     break;
-        //                 case 2:
-        //                     printf("Alunos com menos de 3 Disciplinas.\n");
-        //                     Student aluno[TAM_LISTA_ALUNO];
-        //                     Nascimento DATA[TAM_LISTA_ALUNO];
-        //                     CPF cpf[TAM_LISTA_ALUNO];
-        //                     int qtdAlunoIF;
-        //                     alunoEmMenosDe3(disc, aluno, qtdAlunoIF, DATA, cpf);
-        //                     break;
-        //                 case 3:
-        //                     printf("Turmas com mais de 40 Alunos.\n");
-        //                     Student aluno2[TAM_LISTA_ALUNO];
-        //                     Nascimento DATA2[TAM_LISTA_ALUNO];
-        //                     CPF cpf2[TAM_LISTA_ALUNO];
-        //                     int qtdAlunoIF2;
-        //                     turmaComMaisDe40Alunos(disc, aluno2, qtdAlunoIF2, DATA2, cpf2);
-        //                     break;
-        //                 case 0:
-        //                     sairDisciplina = 1;
-        //                     break;
-        //                 default:
-        //                     printf("Opcao invalida.\n");
-        //                     break;
-        //                 }
-        //             }
-        //             break;
-        //         }
-        //         case 3:
-        //             printf("Atualizar Disciplinas.\n");
-        //             break;
-        //         case 4:
-        //             printf("Deletar Disciplinas.\n");
-        //             break;
-        //         case 0:
-        //             sairDisciplina = 1;
-        //             break;
-        //         default:
-        //             printf("Opcao invalida.\n");
-        //             break;
-        }
-    }
-        break;
+                    break;
+
+                    // case 2:
+                    // {
+                    //     printf("Menu Professor.\n");
+                    //     int sairProfessor = 0;
+                    //     int selecaoProfessor = 0;
+                    //     while (!sairProfessor)
+                    //     {
+                    //         printf("0. Voltar\n"
+                    //                "1. criar  Matricula do Professor\n"
+                    //                "2. Ler Matriculas dos Professores\n"
+                    //                "3. Atualizar Matriculas dos Professores\n"
+                    //                "4. Deletar Matriculas dos Professores\n");
+                    //         scanf("%d", &selecaoProfessor);
+                    //         getchar();
+                    //         switch (selecaoProfessor)
+                    //         {
+                    //         case 1:
+                    //             Teacher professor[TAM_LISTA_PROFESSOR];
+                    //             Nascimento data[TAM_LISTA_PROFESSOR];
+                    //             CPF cpf[TAM_LISTA_PROFESSOR];
+                    //             int qtd;
+                    //             printf("Criar Matricula do Professor.\n");
+                    //             creatTeacher(professor, qtd, data, cpf);
+                    //             qtd++;
+                    //             break;
+                    //         case 2:
+                    //         {
+                    //             printf("Ler Matriculas dos Professores: ");
+                    //             int selecaoLeitura = 0;
+                    //             while (!selecaoLeitura)
+                    //             {
+                    //                 printf("Menu de Leitura de Professores.\n");
+                    //                 printf("1. Ler todos os Professores\n"
+                    //                        "2. Ler Professores por sexo\n"
+                    //                        "3. Ler Professores por data de nascimento\n"
+                    //                        "4. Ler Professores ordenados por nome\n"
+                    //                        "0. Voltar\n");
+                    //                 scanf("%d", &selecaoLeitura);
+                    //                 getchar();
+                    //                 switch (selecaoLeitura)
+                    //                 {
+                    //                 case 1:
+                    //                     Teacher professor[TAM_LISTA_PROFESSOR];
+                    //                     Nascimento data[TAM_LISTA_PROFESSOR];
+                    //                     CPF cpf[TAM_LISTA_PROFESSOR];
+                    //                     int qtd;
+                    //                     readTeacher(professor, qtd, data, cpf);
+                    //                     break;
+                    //                 case 2:
+                    //                 {
+                    //                     char sexo;
+                    //                     readSexTeacher(professor, qtd, sexo, data, cpf);
+                    //                     break;
+                    //                 }
+                    //                 case 3:
+                    //                 {
+                    //                     Nascimento data[11];
+                    //                     readDataTeacher(professor, qtd, data, cpf);
+
+                    //                     break;
+                    //                 }
+                    //                 case 4:
+                    //                     readOrdenadosTeachers(professor, qtd, data, cpf);
+                    //                     break;
+                    //                 case 0:
+                    //                     sairProfessor = 1;
+                    //                     break;
+                    //                 default:
+                    //                     printf("Opcao invalida.\n");
+                    //                     break;
+                    //                 }
+                    //             }
+                    //         }
+                    //         break;
+                    //         }
+                    //     }
+                    // }
+                    // case 3:
+                    //     printf("Menu Disciplina.\n");
+                    //     int sairDisciplina = 0;
+                    //     int selecaoDisciplina = 0;
+                    //     while (!sairDisciplina)
+                    //     {
+                    //         printf("0. Voltar\n"
+                    //                "1. criar Disciplina\n"
+                    //                "2. Ler Disciplinas\n"
+                    //                "3. Atualizar Disciplinas\n"
+                    //                "4. Deletar Disciplinas\n");
+                    //         scanf("%d", &selecaoDisciplina);
+                    //         getchar();
+                    //         switch (selecaoDisciplina)
+                    //         {
+                    //         case 1:
+                    //             Disciplina disc[TAM_LISTA_DISCIPLINA];
+                    //             int qtd;
+                    //             printf("Criar Disciplina.\n");
+                    //             criarDisciplina(disc, qtd);
+                    //             break;
+                    //         case 2:
+                    //         {
+                    //             int selecaoleituraDisciplina = 0;
+                    //             while (!sairDisciplina)
+                    //             {
+                    //                 printf("Menu de Leitura de Disciplinas.\n");
+                    //                 printf("1. Ler todas as Disciplinas\n"
+                    //                        "2. Ler Alunos com poucas Disciplinas\n"
+                    //                        "3. Ler Turmas com mais de 40 Alunos\n"
+                    //                        "0. Voltar\n");
+                    //                 scanf("%d", &selecaoleituraDisciplina);
+                    //                 getchar();
+                    //                 switch (selecaoleituraDisciplina)
+                    //                 {
+                    //                 case 1:
+                    //                     readDisciplina(disc, qtd);
+                    //                     break;
+                    //                 case 2:
+                    //                     printf("Alunos com menos de 3 Disciplinas.\n");
+                    //                     Student aluno[TAM_LISTA_ALUNO];
+                    //                     Nascimento DATA[TAM_LISTA_ALUNO];
+                    //                     CPF cpf[TAM_LISTA_ALUNO];
+                    //                     int qtdAlunoIF;
+                    //                     alunoEmMenosDe3(disc, aluno, qtdAlunoIF, DATA, cpf);
+                    //                     break;
+                    //                 case 3:
+                    //                     printf("Turmas com mais de 40 Alunos.\n");
+                    //                     Student aluno2[TAM_LISTA_ALUNO];
+                    //                     Nascimento DATA2[TAM_LISTA_ALUNO];
+                    //                     CPF cpf2[TAM_LISTA_ALUNO];
+                    //                     int qtdAlunoIF2;
+                    //                     turmaComMaisDe40Alunos(disc, aluno2, qtdAlunoIF2, DATA2, cpf2);
+                    //                     break;
+                    //                 case 0:
+                    //                     sairDisciplina = 1;
+                    //                     break;
+                    //                 default:
+                    //                     printf("Opcao invalida.\n");
+                    //                     break;
+                    //                 }
+                    //             }
+                    //             break;
+                    //         }
+                    //         case 3:
+                    //             printf("Atualizar Disciplinas.\n");
+                    //             break;
+                    //         case 4:
+                    //             printf("Deletar Disciplinas.\n");
+                    //             break;
+                    //         case 0:
+                    //             sairDisciplina = 1;
+                    //             break;
+                    //         default:
+                    //             printf("Opcao invalida.\n");
+                    //             break;
+                }
+            }
+            break;
         default:
             printf("Opcao invalida.\n");
             break;
-}
-}
+        }
+        }
     }
-return 0;
+    return 0;
 }
