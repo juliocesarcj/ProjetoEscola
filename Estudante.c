@@ -113,9 +113,8 @@ void atualizacaodeDados(Student aluno[], int qtdAluno, Nascimento cal[], CPF cpf
                 case 4:
                     printf("Atualizar data de nascimento do Aluno.\n");
                     printf("Digite a nova data de nascimento (dd/mm/aaaa): ");
-                    fgets(cal[i].data, 11, stdin);
-                    int diabi = atoi(cal[i].data);
-                    if (diabi == ERRO_DATA_INVALIDA)
+                    fgets(cal[i].data, sizeof(cal[i].data), stdin);
+                    getchar();
                     case 5:
                         printf("Atualizar CPF do Aluno.\n");
                     printf("Digite o novo CPF: ");
@@ -188,7 +187,7 @@ int deletarStudent(Student aluno[], int qtdAluno)
     else
     {
         printf("Aluno nao encontrado.\n");
-        return 0;
+        return DELETADO_COM_SUCESSO;
     }
 }
 
