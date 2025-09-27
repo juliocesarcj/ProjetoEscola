@@ -220,7 +220,7 @@ int alunoEmMenosDe3(Disciplina disc[], Student aluno[], int qtdAluno, Nascimento
                 cont++;
             }
         }
-        if (cont < 2 && aluno[i].ativoAluno == 1)
+        if (cont < 3 && aluno[i].ativoAluno == 1)
         {
             printf("Aluno: %s, Numero de Chamada: %d, Quantidade de Disciplinas: %d\n", aluno[i].nameAluno, aluno[i].chamadaAluno, cont);
             printf("\nNumero de Chamada: %d", tempAluno[i].chamadaAluno);
@@ -241,7 +241,7 @@ int turmaComMaisDe40Alunos(Disciplina disc[], Teacher pro[], Student aluno[], in
     int encontrou = 0;
     for (int i = 0; i < TAM_LISTA_DISCIPLINA; i++)
     {
-        if (disc[i].qtd > 1 && disc[i].ativoDisciplina == 1)
+        if (disc[i].qtd > 40 && disc[i].ativoDisciplina == 1)
         {
             encontrou = 1;
             printf("\nDisciplina com %d alunos\n", disc[i].qtd);
