@@ -241,7 +241,7 @@ int ISBIXP(Nascimento data[], int qtd)
     printf("mes %d\n", data[0].mesP);
     return valido;
 }
-
+//aniversario professor
 void aniversariantesDoMes(Teacher pro[], int qtdprof, Nascimento dataP[], CPF cpfP[]) {
     if (qtdprof <= 0) {
         printf("Nenhum professor cadastrado.\n");
