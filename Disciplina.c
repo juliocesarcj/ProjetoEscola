@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "All.h"
-
+#include "Disciplina.h"
+#include "Escola.h"
+#include "Professor.h"
+#include "Estudante.h"
 int criarDisciplina(Disciplina disciplina[], int qtd)
 {
     printf("digite o nome da disciplina: \n");

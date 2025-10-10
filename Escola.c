@@ -1,8 +1,11 @@
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
-    #include <stdbool.h>
-    #include "All.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include "Disciplina.h"
+#include "Escola.h"
+#include "Professor.h"
+#include "Estudante.h"
 //menu
     int main()
     {

@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "All.h"
+#include "Escola.h"
+#include "Disciplina.h"
+#include "Escola.h"
+#include "Professor.h"
+#include "Estudante.h"
 
 int createStudent(Student aluno[], int qtdAluno, Nascimento calendario[], CPF cpf[])
 {

@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "All.h"
+#include "Escola.h"
+#include "Professor.h"
+#include "Estudante.h"
+#include "Disciplina.h"
 
 int createProf(Teacher p[], int qtd, Nascimento calendario[], CPF cpf[])
 {
